@@ -81,6 +81,7 @@ features = [
 default = ["panic_hook"]
 panic_hook = ["console_error_panic_hook"]
 hydrate = []
+static_launch = []
 
 [dev-dependencies]
 dioxus = { path = "../dioxus" }

@@ -87,6 +87,7 @@ mod util;
 ///     render!(div {"hello world"})
 /// }
 /// ```
+#[cfg(not(feature = "static_launch"))]
 pub fn launch(root_component: fn(Scope) -> Element) {
     launch_with_props(root_component, (), Config::default());
 }
