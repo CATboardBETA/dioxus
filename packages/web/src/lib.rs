@@ -87,8 +87,31 @@ mod util;
 ///     render!(div {"hello world"})
 /// }
 /// ```
-#[cfg(not(feature = "static_launch"))]
 pub fn launch(root_component: fn(Scope) -> Element) {
+    launch_with_props(root_component, (), Config::default());
+}
+
+/// Launch the VirtualDOM given a root component and a configuration.
+///
+/// This function expects the root component to not have root props. To launch the root component with root props, use
+/// `launch_with_props` instead.
+///
+/// This method will block the thread with `spawn_local` from wasm_bindgen_futures.
+///
+/// If you need to run the VirtualDOM in its own thread, use `run_with_props` instead and await the future.
+///
+/// # Example
+///
+/// ```rust, ignore
+/// fn main() {
+///     dioxus_web::launch(App);
+/// }
+///
+/// static App: Component = |cx| {
+///     render!(div {"hello world"})
+/// }
+/// ```
+pub fn launch_static(root_component: fn(Scope<'static>) -> Element) {
     launch_with_props(root_component, (), Config::default());
 }
 

@@ -1,3 +1,5 @@
+#![feature(generic_associated_types)]
+
 use std::hash::BuildHasherDefault;
 
 pub use node_ref::NodeMask;
