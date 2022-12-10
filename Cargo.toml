@@ -38,7 +38,7 @@ rust-version = "1.60.0"
 publish = false
 
 [dev-dependencies]
-dioxus = { path = "../dioxus" }
+dioxus = { path = "./packages/dioxus" }
 dioxus-desktop = { path = "./packages/desktop" }
 dioxus-ssr = { path = "./packages/ssr" }
 dioxus-router = { path = "./packages/router" }
