@@ -53,6 +53,7 @@
 //     - Do the VDOM work during the idlecallback
 //     - Do DOM work in the next requestAnimationFrame callback
 
+use std::mem::transmute;
 pub use crate::cfg::Config;
 use crate::dom::virtual_event_from_websys_event;
 pub use crate::util::use_eval;
@@ -112,6 +113,7 @@ pub fn launch(root_component: fn(Scope) -> Element) {
 /// }
 /// ```
 pub fn launch_static(root_component: fn(Scope<'static>) -> Element) {
+    let root_component = unsafe { transmute(root_component) };
     launch_with_props(root_component, (), Config::default());
 }
 
