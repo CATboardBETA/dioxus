@@ -10,6 +10,12 @@ pub mod events {
     pub use dioxus_html::prelude::*;
 }
 
+#[cfg(feature = "web")]
+pub mod web {
+    #[cfg(feature = "web")]
+    pub use dioxus_web::*;
+}
+
 #[cfg(feature = "html")]
 pub use dioxus_html as html;
 
